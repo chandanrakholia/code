@@ -1,0 +1,1 @@
+{"name":"Local: next_taller_guy","url":"/home/chandan/Desktop/Code/HackerRank/next_taller_guy.cpp","tests":[{"id":1654866951229,"input":"5\n110 100 120 130 150","output":"120 120 130 150 -1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/chandan/Desktop/Code/HackerRank/next_taller_guy.cpp","group":"local","local":true}

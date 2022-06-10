@@ -1,0 +1,1 @@
+{"name":"Local: assembly_ground_parde","url":"/home/chandan/Desktop/Code/HackerRank/assembly_ground_parde.cpp","tests":[{"id":1654842148124,"input":"8 3\n1 \n3\n5 \n-1 \n-3 \n3 \n6 \n7","output":"21"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/chandan/Desktop/Code/HackerRank/assembly_ground_parde.cpp","group":"local","local":true}
