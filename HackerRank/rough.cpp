@@ -1,43 +1,98 @@
-#include<bits/stdc++.h>
-#include<iostream>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <queue>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-
-int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-    int n;cin>>n;
-    queue<pair<int,int>>q;
-    int countx=0;
-    int county=0;
-    for (auto i = 0; i < n; i++)
+int func(queue<int>q1,queue<int>q2,int n)
+{
+    bool f = false;
+    int temp2 = q1.front()-q2.front();
+    int count = 1;
+    while(n>0)
     {
-        int x,y;
-        cin>>x>>y;
-        q.push({x,y});
-        countx=countx+x;
-        county=county+y;
-    }
-    int count=0;
-    for (auto i = 0; i < n; i++)
-    {
-        if ((q.front().first) < (q.front().second))
+        q1.pop();
+        q2.pop();
+        count+=1;
+        if(temp2+q1.front()>=q2.front())
         {
-            q.push({q.front().first,q.front().second});
-            q.pop();
-            count++;
+            f = true;
         }
-        
+        else
+        {
+            f = false;
+            break;
+        }
+        temp2 = temp2 + q1.front() - q2.front();
+        n--;
     }
-    if (count>0 and count!=n and countx>=county)
+    if(f==true)
     {
-        cout<<count<<endl;
+        return 1;
     }
-    else
-    {
-        cout<<-1<<endl;
-    }
-    
-    
-    
-    
     return 0;
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+
+    int n;
+    cin>>n;
+    queue<int>q1;
+    queue<int>q2;
+    int i = 0;
+    while(i<n)
+    {
+        int d;
+        cin>>d;
+        q1.push(d);
+        i+=1;
+    }
+    int j = 0;
+    while(j<n)
+    {
+        int d;
+        cin>>d;
+        q2.push(d);
+        j+=1;
+    }
+    int count = 0;
+    int n1 = n,n2 = n;
+    while(n>0)
+    {
+        int a = 0;
+        if(q1.front()>q2.front())
+        {
+            a = func(q1,q2,n1);
+            if(a==1)
+            {
+                cout<<count;
+                break;
+            }
+                count+=1;
+                int temp = q1.front();
+                int temp1 = q2.front();
+                q1.pop();
+                q2.pop();
+                q1.push(temp);
+                q2.push(temp1);
+        }
+        if(count>=n2)
+        {
+            cout<<-1;
+            break;
+        }
+        else 
+        {
+            count+=1;
+            int temp = q1.front();
+            int temp1 = q2.front();
+            q1.pop();
+            q2.pop();
+            q1.push(temp);
+            q2.push(temp1);
+        }
+        n--;
+    }
 }

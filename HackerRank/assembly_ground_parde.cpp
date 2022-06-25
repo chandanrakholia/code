@@ -1,33 +1,33 @@
 #include<bits/stdc++.h>
 #include<iostream>
 using namespace std;
-int MAX(queue<int>q,int k){
-    int arr[k];
-    int i;
-    i=0;
-    while(!q.empty() and i<3){
-        arr[i]=q.front();
+pair<int,int> MAX(queue<pair<int,int>>q,int k){
+    vector<pair<int,int>>v;
+    vector<pair<int,int>>ans;
+    int i=0;
+    while(q.size()>0 and i<k){
+        v[i]={q.front().first,q.front().second};
         q.pop();
         i++;
-    }
-    return *max_element(arr,arr+k);
+    }   
+    return {1,1};
 }
 int main(){
-    queue<int>q;
+    queue<pair<int,int>>q;
     int n,k;cin>>n>>k;
-    vector<int>v;
+    vector<pair<int,int>>v;
     int v2[k];
     for (int i = 0; i < n; i++)
     {
         int x;
         cin>>x;
-        q.push(x);
+        q.push({x,i});
         if (q.size()==k)
         {   
             v.push_back(MAX(q,k));
             q.pop();
         }
     }
-    cout<<v[0];   
+    cout<<v2[0];   
     return 0;
 }
