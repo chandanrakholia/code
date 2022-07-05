@@ -1,72 +1,58 @@
-#include<bits/stdc++.h>
-#include<iostream>
+#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-void Tprime(long long int n){
-    int count=1;
-    int f=1;
-    for (int i = 1; i < (n/2)+1; i++)
+typedef unsigned long long int ul;
+bool isPrime(ul n)
+{
+    if (n < 2)
+        return false;
+    else if (n==2)
     {
-        if (n%i==0)
-        {
-            count++;
-            if (count>3)
-            {
-                cout<<"NO"<<endl;
-                break;
-            }
-                      
-        }
-        
+        return true;
     }
-    if (count==3)
+    long long x=sqrt(n);
+    if (n%2==0)
     {
-        cout<<"YES"<<endl;
-    }
-    else if (count<3)
-    {
-        cout<<"NO"<<endl;
+        return false;
     }
     
-    
-    
+    for (ul i = 3; i <= x; i++)
+        if (n % i == 0)
+            return false;
+ 
+    return true;
 }
+int main()
+{
+    int t;
+    cin >> t;
+    map<long long int,bool>mp;
+    for (int i = 0; i < t; i++)
+    {
+    ul n;
+    cin >> n;
+    ul s=sqrt(n);
+    if (mp.find(n)!=mp.end())
+    {
+        if(mp.find(n)->second){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+    }
+    else{
 
-void isprime(long long int y){
-    int f=0;
-    for (int i = 2; i < (y/2)+1; i++)
-    {
-        if (y%i==0)
-        {
-            f=1;
-            break;
-        }
-        
-    }
-    if (f==1)
+    if (s*s==n and isPrime(s)==true)
     {
         cout<<"YES"<<endl;
+        mp[n]=1;
     }
-    else
-    {
+    else{
         cout<<"NO"<<endl;
+        mp[n]=0;
     }
-    
-    
-    
-    
-}
-int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-    int n;
-    cin>>n;
-    for (int i = 0; i < n; i++)
-    {
-        long long int x;
-        cin>>x;
-        long long int y=sqrt(x);
-        isprime(y);
     }
-    
-    
+    }
     return 0;
 }
